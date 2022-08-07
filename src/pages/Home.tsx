@@ -15,8 +15,13 @@ const SearchDropdown = styled.div`
   width: 100%;
 `;
 
-interface Countries {
+interface CountriesProperties {
   common: string;
+  svg: string;
+}
+interface Countries {
+  flags: CountriesProperties;
+  name: CountriesProperties;
   population: number;
   region: string;
   capital: string[];
