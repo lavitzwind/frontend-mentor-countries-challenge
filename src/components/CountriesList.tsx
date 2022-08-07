@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import CircularProgress from "@mui/material/CircularProgress";
 
 const Container = styled.div`
   display: flex;
@@ -96,33 +97,47 @@ interface Countries {
 interface CountriesListProps {
   countryData: Countries[];
   loader: boolean;
+  query: string;
 }
 
-const CountriesList = ({ countryData, loader }: CountriesListProps) => {
-  console.log(countryData[0]);
-
+const CountriesList = ({ countryData, loader, query }: CountriesListProps) => {
   return (
     <Container>
-      <Wrapper>
-        {countryData.map((country, index) => (
-          <CountriesCard key={index}>
-            <CountryImg src={country?.flags.svg} alt={country?.name.common} />
-            <CountriesCardWrapper>
-              <CountryName>{country.name.common}</CountryName>
-              <CountryPopulation>
-                <Text>Population: </Text>
-                {country.population.toLocaleString()}
-              </CountryPopulation>
-              <CountryRegion>
-                <Text>Region:</Text> {country.region}
-              </CountryRegion>
-              <CountryCapital>
-                <Text>Capital:</Text> {country.capital}
-              </CountryCapital>
-            </CountriesCardWrapper>
-          </CountriesCard>
-        ))}
-      </Wrapper>
+      {loader ? (
+        <CircularProgress
+          sx={{
+            color: "var(--very-dark-blue-2)",
+          }}
+        />
+      ) : (
+        <Wrapper>
+          {countryData
+            .filter((country) =>
+              country.name.common.toLowerCase().includes(query.toLowerCase())
+            )
+            .map((country, index) => (
+              <CountriesCard key={index}>
+                <CountryImg
+                  src={country?.flags.svg}
+                  alt={country?.name.common}
+                />
+                <CountriesCardWrapper>
+                  <CountryName>{country.name.common}</CountryName>
+                  <CountryPopulation>
+                    <Text>Population: </Text>
+                    {country.population.toLocaleString()}
+                  </CountryPopulation>
+                  <CountryRegion>
+                    <Text>Region:</Text> {country.region}
+                  </CountryRegion>
+                  <CountryCapital>
+                    <Text>Capital:</Text> {country.capital}
+                  </CountryCapital>
+                </CountriesCardWrapper>
+              </CountriesCard>
+            ))}
+        </Wrapper>
+      )}
     </Container>
   );
 };

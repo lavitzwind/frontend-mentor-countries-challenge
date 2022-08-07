@@ -36,7 +36,12 @@ const Input = styled.input`
   width: 100%;
 `;
 
-const Search = () => {
+interface SearchProps {
+  setQuery: (query: string) => void;
+  query?: string;
+}
+
+const Search = ({ setQuery, query }: SearchProps) => {
   return (
     <Container>
       <Form>
@@ -50,6 +55,8 @@ const Search = () => {
           type="text"
           placeholder="Search"
           autoComplete="off"
+          onChange={(e) => setQuery(e.target.value)}
+          value={query}
         />
       </Form>
     </Container>

@@ -15,9 +15,9 @@ const Container = styled.div`
 
 const Wrapper = styled.div`
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
-  width: 25%;
+  width: 30%;
   height: 100%;
   gap: 30px;
   background-color: var(--white);
@@ -32,6 +32,7 @@ const Wrapper = styled.div`
 
 const Text = styled.span`
   font-size: 0.9rem;
+  margin-left: 10px;
 `;
 
 const RegionList = styled.div`
@@ -41,11 +42,12 @@ const RegionList = styled.div`
   justify-content: center;
   text-align: left;
   flex-direction: column;
-  width: 25%;
+  width: 30%;
   top: 45px;
   right: 0;
   background-color: var(--white);
   border-radius: 5px;
+  z-index: 1;
 `;
 
 const OptionRegion = styled.div`

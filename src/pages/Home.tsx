@@ -29,6 +29,7 @@ interface Countries {
 
 const Home = () => {
   const [countryData, setCountryData] = useState<Countries[]>([]);
+  const [query, setQuery] = useState<string>("");
   const [loader, setLoader] = useState<boolean>(false);
 
   const apiUrl = "https://restcountries.com/v3.1/all";
@@ -51,10 +52,10 @@ const Home = () => {
     <Container>
       <Navbar />
       <SearchDropdown>
-        <Search />
+        <Search setQuery={setQuery} query={query} />
         <Dropdown />
       </SearchDropdown>
-      <CountriesList countryData={countryData} loader={loader} />
+      <CountriesList countryData={countryData} loader={loader} query={query} />
     </Container>
   );
 };
