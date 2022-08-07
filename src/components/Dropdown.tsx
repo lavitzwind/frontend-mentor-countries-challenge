@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import { useState } from "react";
+import { useState, useRef } from "react";
+import useOnClickOutside from "../hooks/useOnClickOutside";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
 const Container = styled.div`
@@ -70,8 +71,12 @@ const RegionText = styled.span`
 const Dropdown = () => {
   const [open, setOpen] = useState<boolean>(false);
 
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useOnClickOutside(dropdownRef, () => setOpen(false));
+
   return (
-    <Container>
+    <Container ref={dropdownRef}>
       <Wrapper onClick={() => setOpen(!open)}>
         <Text>Filter by Region</Text>
         <KeyboardArrowDownIcon />
@@ -79,11 +84,11 @@ const Dropdown = () => {
       {open && (
         <RegionList>
           <OptionRegion>
-            <RegionText>Africa</RegionText>
-            <RegionText>Americas</RegionText>
-            <RegionText>Asia</RegionText>
-            <RegionText>Europe</RegionText>
-            <RegionText>Oceania</RegionText>
+            <RegionText onClick={() => setOpen(false)}>Africa</RegionText>
+            <RegionText onClick={() => setOpen(false)}>Americas</RegionText>
+            <RegionText onClick={() => setOpen(false)}>Asia</RegionText>
+            <RegionText onClick={() => setOpen(false)}>Europe</RegionText>
+            <RegionText onClick={() => setOpen(false)}>Oceania</RegionText>
           </OptionRegion>
         </RegionList>
       )}
