@@ -1,7 +1,14 @@
 import styled from "styled-components";
+import Home from "./pages/Home";
+
+const Container = styled.div``;
 
 function App() {
-  return <div className="App">Hello World!</div>;
+  return (
+    <Container>
+      <Home />
+    </Container>
+  );
 }
 
 export default App;
