@@ -26,7 +26,7 @@ const CountriesCard = styled.div`
   justify-content: center;
   align-items: flex-start;
   width: 20%;
-  height: auto;
+  height: 350px;
   background-color: var(--white);
   gap: 10px;
   border-radius: 10px;
@@ -45,7 +45,7 @@ const CountriesCard = styled.div`
 
 const CountryImg = styled.img`
   width: 100%;
-  height: 150px;
+  height: 180px;
   object-fit: cover;
   object-position: center;
   border-style: none;
@@ -113,7 +113,7 @@ const CountriesList = ({ countryData, loader, query }: CountriesListProps) => {
         <Wrapper>
           {countryData
             .filter((country) =>
-              country.name.common.toLowerCase().includes(query.toLowerCase())
+              country?.name.common.toLowerCase().includes(query.toLowerCase())
             )
             .map((country, index) => (
               <CountriesCard key={index}>
@@ -122,16 +122,16 @@ const CountriesList = ({ countryData, loader, query }: CountriesListProps) => {
                   alt={country?.name.common}
                 />
                 <CountriesCardWrapper>
-                  <CountryName>{country.name.common}</CountryName>
+                  <CountryName>{country?.name.common}</CountryName>
                   <CountryPopulation>
                     <Text>Population: </Text>
-                    {country.population.toLocaleString()}
+                    {country?.population.toLocaleString()}
                   </CountryPopulation>
                   <CountryRegion>
-                    <Text>Region:</Text> {country.region}
+                    <Text>Region:</Text> {country?.region}
                   </CountryRegion>
                   <CountryCapital>
-                    <Text>Capital:</Text> {country.capital}
+                    <Text>Capital:</Text> {country?.capital}
                   </CountryCapital>
                 </CountriesCardWrapper>
               </CountriesCard>

@@ -33,6 +33,18 @@ const Home = () => {
   const [loader, setLoader] = useState<boolean>(false);
 
   const apiUrl = "https://restcountries.com/v3.1/all";
+  const apiRegionUrl = "https://restcountries.com/v3.1/region/";
+
+  const fetchRegion = async (region: string) => {
+    try {
+      setLoader(true);
+      const { data } = await axios.get(apiRegionUrl + region);
+      setCountryData(data);
+      setLoader(false);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   useEffect(() => {
     const fetchCountryData = async () => {
@@ -53,7 +65,7 @@ const Home = () => {
       <Navbar />
       <SearchDropdown>
         <Search setQuery={setQuery} query={query} />
-        <Dropdown />
+        <Dropdown fetchRegion={fetchRegion} />
       </SearchDropdown>
       <CountriesList countryData={countryData} loader={loader} query={query} />
     </Container>

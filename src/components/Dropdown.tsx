@@ -70,27 +70,49 @@ const RegionText = styled.span`
   }
 `;
 
-const Dropdown = () => {
+interface DropDownProps {
+  fetchRegion: (region: string) => void;
+}
+
+const Dropdown = ({ fetchRegion }: DropDownProps) => {
   const [open, setOpen] = useState<boolean>(false);
+  const [region, setRegion] = useState<string>("");
 
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   useOnClickOutside(dropdownRef, () => setOpen(false));
 
+  const handleClick = (region: string) => {
+    fetchRegion(region);
+    setRegion(region);
+    setOpen(false);
+  };
+
   return (
     <Container ref={dropdownRef}>
       <Wrapper onClick={() => setOpen(!open)}>
-        <Text>Filter by Region</Text>
+        <Text>
+          {region.slice(0, 1).toUpperCase() + region.slice(1) ||
+            "Filter by Region"}
+        </Text>
         <KeyboardArrowDownIcon />
       </Wrapper>
       {open && (
         <RegionList>
           <OptionRegion>
-            <RegionText onClick={() => setOpen(false)}>Africa</RegionText>
-            <RegionText onClick={() => setOpen(false)}>Americas</RegionText>
-            <RegionText onClick={() => setOpen(false)}>Asia</RegionText>
-            <RegionText onClick={() => setOpen(false)}>Europe</RegionText>
-            <RegionText onClick={() => setOpen(false)}>Oceania</RegionText>
+            <RegionText onClick={() => handleClick("africa")}>
+              Africa
+            </RegionText>
+            <RegionText onClick={() => handleClick("americas")}>
+              Americas
+            </RegionText>
+            <RegionText onClick={() => handleClick("asia")}>Asia</RegionText>
+            <RegionText onClick={() => handleClick("europe")}>
+              Europe
+            </RegionText>
+            <RegionText onClick={() => handleClick("oceania")}>
+              Oceania
+            </RegionText>
           </OptionRegion>
         </RegionList>
       )}
