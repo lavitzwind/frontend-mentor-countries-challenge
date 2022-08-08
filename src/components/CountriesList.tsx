@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import CircularProgress from "@mui/material/CircularProgress";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   display: flex;
@@ -26,7 +27,7 @@ const CountriesCard = styled.div`
   justify-content: center;
   align-items: flex-start;
   width: 20%;
-  height: 350px;
+  height: 345px;
   background-color: var(--white);
   gap: 10px;
   border-radius: 10px;
@@ -44,7 +45,7 @@ const CountriesCard = styled.div`
 `;
 
 const CountryImg = styled.img`
-  width: 100%;
+  width: 288px;
   height: 180px;
   object-fit: cover;
   object-position: center;
@@ -82,13 +83,9 @@ const Text = styled.span`
   font-weight: 800;
 `;
 
-interface CountriesProperties {
-  common: string;
-  svg: string;
-}
 interface Countries {
-  flags: CountriesProperties;
-  name: CountriesProperties;
+  flags: { svg: string };
+  name: { common: string };
   population: number;
   region: string;
   capital: string[];
@@ -117,23 +114,31 @@ const CountriesList = ({ countryData, loader, query }: CountriesListProps) => {
             )
             .map((country, index) => (
               <CountriesCard key={index}>
-                <CountryImg
-                  src={country?.flags.svg}
-                  alt={country?.name.common}
-                />
-                <CountriesCardWrapper>
-                  <CountryName>{country?.name.common}</CountryName>
-                  <CountryPopulation>
-                    <Text>Population: </Text>
-                    {country?.population.toLocaleString()}
-                  </CountryPopulation>
-                  <CountryRegion>
-                    <Text>Region:</Text> {country?.region}
-                  </CountryRegion>
-                  <CountryCapital>
-                    <Text>Capital:</Text> {country?.capital}
-                  </CountryCapital>
-                </CountriesCardWrapper>
+                <Link
+                  to={`/country/${country?.name.common}`}
+                  style={{
+                    textDecoration: "none",
+                    color: "var(--black)",
+                  }}
+                >
+                  <CountryImg
+                    src={country?.flags.svg}
+                    alt={country?.name.common}
+                  />
+                  <CountriesCardWrapper>
+                    <CountryName>{country?.name.common}</CountryName>
+                    <CountryPopulation>
+                      <Text>Population: </Text>
+                      {country?.population.toLocaleString()}
+                    </CountryPopulation>
+                    <CountryRegion>
+                      <Text>Region:</Text> {country?.region}
+                    </CountryRegion>
+                    <CountryCapital>
+                      <Text>Capital:</Text> {country?.capital}
+                    </CountryCapital>
+                  </CountriesCardWrapper>
+                </Link>
               </CountriesCard>
             ))}
         </Wrapper>

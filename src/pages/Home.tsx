@@ -6,7 +6,14 @@ import CountriesList from "../components/CountriesList";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const Container = styled.div``;
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+`;
 
 const SearchDropdown = styled.div`
   display: flex;
@@ -15,13 +22,9 @@ const SearchDropdown = styled.div`
   width: 100%;
 `;
 
-interface CountriesProperties {
-  common: string;
-  svg: string;
-}
 interface Countries {
-  flags: CountriesProperties;
-  name: CountriesProperties;
+  flags: { svg: string };
+  name: { common: string };
   population: number;
   region: string;
   capital: string[];
