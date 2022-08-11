@@ -1,11 +1,13 @@
 import styled from "styled-components";
 import CircularProgress from "@mui/material/CircularProgress";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { DarkModeContext } from "../context/darkModeContext";
 
 const Container = styled.div`
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   width: 100%;
   height: 100%;
 `;
@@ -13,7 +15,7 @@ const Container = styled.div`
 const Wrapper = styled.div`
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   width: 100%;
   max-width: 1440px;
   height: 100%;
@@ -27,14 +29,14 @@ const CountriesCard = styled.div`
   justify-content: center;
   align-items: flex-start;
   width: 20%;
-  height: 345px;
+  height: 336px;
   background-color: var(--white);
   gap: 10px;
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   filter: brightness(1);
   transform: scale(1);
-  transition: all 0.3s ease-in-out;
+  transition: all 0.15s ease-in-out;
 
   &:hover {
     cursor: pointer;
@@ -50,6 +52,7 @@ const CountryImg = styled.img`
   object-fit: cover;
   object-position: center;
   border-style: none;
+  border-radius: 5px;
 `;
 
 const CountriesCardWrapper = styled.div`
@@ -98,14 +101,33 @@ interface CountriesListProps {
 }
 
 const CountriesList = ({ countryData, loader, query }: CountriesListProps) => {
+  const { darkMode } = useContext(DarkModeContext);
+
   return (
-    <Container>
+    <Container
+      style={{
+        backgroundColor: darkMode
+          ? "var(--very-dark-blue)"
+          : "var(--very-light-gray)",
+      }}
+    >
       {loader ? (
-        <CircularProgress
-          sx={{
-            color: "var(--very-dark-blue-2)",
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            width: "100%",
+            height: "78.1vh",
           }}
-        />
+        >
+          <CircularProgress
+            sx={{
+              color: darkMode ? "var(--white)" : "var(--very-dark-blue-2)",
+              marginBottom: "10rem",
+            }}
+          />
+        </div>
       ) : (
         <Wrapper>
           {countryData
@@ -113,7 +135,15 @@ const CountriesList = ({ countryData, loader, query }: CountriesListProps) => {
               country?.name.common.toLowerCase().includes(query.toLowerCase())
             )
             .map((country, index) => (
-              <CountriesCard key={index}>
+              <CountriesCard
+                key={index}
+                style={{
+                  backgroundColor: darkMode
+                    ? "var(--dark-blue)"
+                    : "var(--white)",
+                  color: darkMode ? "var(--white)" : "var(--black)",
+                }}
+              >
                 <Link
                   to={`/country/${country?.name.common}`}
                   style={{

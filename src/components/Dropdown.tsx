@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import { useState, useRef } from "react";
+import { useState, useRef, useContext } from "react";
+import { DarkModeContext } from "../context/darkModeContext";
 import useOnClickOutside from "../hooks/useOnClickOutside";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
@@ -78,6 +79,8 @@ const Dropdown = ({ fetchRegion }: DropDownProps) => {
   const [open, setOpen] = useState<boolean>(false);
   const [region, setRegion] = useState<string>("");
 
+  const { darkMode } = useContext(DarkModeContext);
+
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   useOnClickOutside(dropdownRef, () => setOpen(false));
@@ -90,7 +93,13 @@ const Dropdown = ({ fetchRegion }: DropDownProps) => {
 
   return (
     <Container ref={dropdownRef}>
-      <Wrapper onClick={() => setOpen(!open)}>
+      <Wrapper
+        onClick={() => setOpen(!open)}
+        style={{
+          backgroundColor: darkMode ? "var(--dark-blue)" : "var(--white)",
+          color: darkMode ? "var(--white)" : "#000",
+        }}
+      >
         <Text>
           {region.slice(0, 1).toUpperCase() + region.slice(1) ||
             "Filter by Region"}
@@ -98,7 +107,12 @@ const Dropdown = ({ fetchRegion }: DropDownProps) => {
         <KeyboardArrowDownIcon />
       </Wrapper>
       {open && (
-        <RegionList>
+        <RegionList
+          style={{
+            backgroundColor: darkMode ? "var(--dark-blue)" : "var(--white)",
+            color: darkMode ? "var(--white)" : "#000",
+          }}
+        >
           <OptionRegion>
             <RegionText onClick={() => handleClick("africa")}>
               Africa

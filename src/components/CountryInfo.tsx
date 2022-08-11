@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { DarkModeContext } from "../context/darkModeContext";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
@@ -199,6 +200,8 @@ const CountryInfo = () => {
   const location = useLocation();
   const countryName = location.pathname.split("/")[2].toLowerCase();
   const countryUrl = `https://restcountries.com/v3.1/name/${countryName}`;
+
+  const { darkMode } = useContext(DarkModeContext);
 
   useEffect(() => {
     const fetchCountryInfo = async () => {

@@ -3,7 +3,9 @@ import Navbar from "../components/Navbar";
 import Search from "../components/Search";
 import Dropdown from "../components/Dropdown";
 import CountriesList from "../components/CountriesList";
-import { useState, useEffect } from "react";
+import Footer from "../components/Footer";
+import { useState, useEffect, useContext } from "react";
+import { DarkModeContext } from "../context/darkModeContext";
 import axios from "axios";
 
 const Container = styled.div`
@@ -34,6 +36,7 @@ const Home = () => {
   const [countryData, setCountryData] = useState<Countries[]>([]);
   const [query, setQuery] = useState<string>("");
   const [loader, setLoader] = useState<boolean>(false);
+  const { darkMode } = useContext(DarkModeContext);
 
   const apiUrl = "https://restcountries.com/v3.1/all";
   const apiRegionUrl = "https://restcountries.com/v3.1/region/";
@@ -66,11 +69,18 @@ const Home = () => {
   return (
     <Container>
       <Navbar />
-      <SearchDropdown>
+      <SearchDropdown
+        style={{
+          backgroundColor: darkMode
+            ? "var(--very-dark-blue)"
+            : "var(--very-light-gray)",
+        }}
+      >
         <Search setQuery={setQuery} query={query} />
         <Dropdown fetchRegion={fetchRegion} />
       </SearchDropdown>
       <CountriesList countryData={countryData} loader={loader} query={query} />
+      <Footer />
     </Container>
   );
 };
