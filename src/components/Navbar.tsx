@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import { DarkModeContext } from "../context/darkModeContext";
 
@@ -43,10 +43,12 @@ const DarkMode = styled.div`
   }
 `;
 
-const DarkModeName = styled.span``;
+const DarkModeName = styled.span`
+  color: var(--black);
+`;
 
 const Navbar = () => {
-  const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(true);
   const { dispatch, darkMode } = useContext(DarkModeContext);
 
   const handleDarkMode = () => {

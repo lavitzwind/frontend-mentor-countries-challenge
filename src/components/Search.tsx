@@ -2,6 +2,7 @@ import styled from "styled-components";
 import SearchIcon from "@mui/icons-material/Search";
 import { useContext } from "react";
 import { DarkModeContext } from "../context/darkModeContext";
+import { SearchProps } from "../interfaces/searchProps";
 
 const Container = styled.div`
   display: flex;
@@ -42,11 +43,6 @@ const Input = styled.input`
     color: #ddd;
   }
 `;
-
-interface SearchProps {
-  setQuery: (query: string) => void;
-  query?: string;
-}
 
 const Search = ({ setQuery, query }: SearchProps) => {
   const { darkMode } = useContext(DarkModeContext);
