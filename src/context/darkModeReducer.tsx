@@ -1,6 +1,12 @@
-import { DarkModeReducer, DarkModeAction } from "../interfaces/darkModeState";
+import {
+  DarkModeReducerProps,
+  DarkModeAction,
+} from "../interfaces/darkModeState";
 
-const DarkModeReducer = (state: DarkModeReducer, action: DarkModeAction) => {
+const DarkModeReducer = (
+  state: DarkModeReducerProps,
+  action: DarkModeAction
+) => {
   switch (action.type) {
     case "TOGGLE": {
       console.log(action);

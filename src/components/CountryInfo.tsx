@@ -216,7 +216,14 @@ const CountryInfo = () => {
   }, [countryUrl]);
 
   return (
-    <Container>
+    <Container
+      style={{
+        backgroundColor: darkMode
+          ? "var(--very-dark-blue)"
+          : "var(--very-light-gray)",
+        color: darkMode ? "var(--white)" : "var(--black)",
+      }}
+    >
       <BackButtonWrapper>
         <Link
           to="/"
@@ -312,7 +319,7 @@ const CountryInfo = () => {
                   key={index}
                   style={{
                     textDecoration: "none",
-                    color: "var(--black)",
+                    color: "#000",
                     marginRight: "0.3rem",
                     fontWeight: "500",
                     backgroundColor: "var(--white)",

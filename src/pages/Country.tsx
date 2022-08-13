@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Navbar from "../components/Navbar";
 import CountryInfo from "../components/CountryInfo";
+import Footer from "../components/Footer";
 
 const Container = styled.div`
   display: flex;
@@ -16,6 +17,7 @@ const Country = () => {
     <Container>
       <Navbar />
       <CountryInfo />
+      <Footer />
     </Container>
   );
 };

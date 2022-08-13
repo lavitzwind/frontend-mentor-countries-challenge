@@ -7,6 +7,6 @@ export interface DarkModeState {
   dispatch: (action: DarkModeAction) => void;
 }
 
-export interface DarkModeReducer {
+export interface DarkModeReducerProps {
   darkMode: boolean;
 }
