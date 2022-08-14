@@ -1,7 +1,8 @@
 import styled from "styled-components";
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext } from "react";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import { DarkModeContext } from "../context/darkModeContext";
+import { mobile, tablet, desktop } from "../utils/mediaQueries";
 
 const Container = styled.nav`
   display: flex;
@@ -21,12 +22,24 @@ const Wrapper = styled.div`
   height: 100%;
   width: 100%;
   max-width: 1440px;
+  ${desktop(`
+    max-width: 1000px;
+  `)}
+  ${tablet(`
+    max-width: 500px;
+  `)}
+  ${mobile(`
+    max-width: 375px;
+  `)}
 `;
 
 const Logo = styled.h1`
   font-weight: 800;
   font-size: 1.5rem;
   color: var(--black);
+  ${mobile(`
+  font-size: 1.2rem;
+`)}
 `;
 
 const DarkMode = styled.div`

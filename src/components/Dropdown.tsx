@@ -3,6 +3,7 @@ import { useState, useRef, useContext } from "react";
 import { DarkModeContext } from "../context/darkModeContext";
 import useOnClickOutside from "../hooks/useOnClickOutside";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import { mobile, tablet, desktop } from "../utils/mediaQueries";
 
 const Container = styled.div`
   position: relative;
@@ -12,19 +13,34 @@ const Container = styled.div`
   width: 100%;
   height: 40px;
   max-width: 720px;
+  ${desktop(`
+  max-width: 470px;
+`)}
+  ${tablet(`
+  max-width: 225px;
+`)}
+${mobile(`
+  max-width: 220px;
+`)}
 `;
 
 const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 30%;
+  width: 35%;
   height: 100%;
   gap: 30px;
   background-color: var(--white);
   border-radius: 5px;
   padding: 10px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  ${desktop(`
+  width: 43%;
+`)}
+  ${tablet(`
+width: 100%;
+  `)}
 
   &:hover {
     cursor: pointer;
@@ -43,12 +59,19 @@ const RegionList = styled.div`
   justify-content: center;
   text-align: left;
   flex-direction: column;
-  width: 30%;
+  width: 35%;
   top: 45px;
   right: 0;
   background-color: var(--white);
   border-radius: 5px;
   z-index: 1;
+
+  ${desktop(`
+  width: 43%;
+`)}
+  ${tablet(`
+  width: 100%;
+  `)}
 `;
 
 const OptionRegion = styled.div`

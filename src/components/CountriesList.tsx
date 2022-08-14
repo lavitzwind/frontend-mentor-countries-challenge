@@ -3,6 +3,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { DarkModeContext } from "../context/darkModeContext";
+import { mobile, tablet, desktop } from "../utils/mediaQueries";
 
 const Container = styled.div`
   display: flex;
@@ -21,6 +22,12 @@ const Wrapper = styled.div`
   height: 100%;
   gap: 95px;
   flex-wrap: wrap;
+  ${desktop(`
+    max-width: 1000px;
+`)}
+  ${mobile(`
+    max-width: 380px;
+`)}
 `;
 
 const CountriesCard = styled.div`
@@ -37,6 +44,15 @@ const CountriesCard = styled.div`
   filter: brightness(1);
   transform: scale(1);
   transition: all 0.15s ease-in-out;
+  ${desktop(`
+  width: 26%;
+`)}
+  ${tablet(`
+  width: 40%;
+`)}
+  ${mobile(`
+  width: 70%;
+`)}
 
   &:hover {
     cursor: pointer;
@@ -53,6 +69,13 @@ const CountryImg = styled.img`
   object-position: center;
   border-style: none;
   border-radius: 5px;
+  ${desktop(`
+  width: 270px;
+  max-width: 100%;
+`)}
+  ${tablet(`
+  width: 300px;
+  `)}
 `;
 
 const CountriesCardWrapper = styled.div`

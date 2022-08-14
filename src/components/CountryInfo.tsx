@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import axios from "axios";
 import lookup from "country-code-lookup";
+import { mobile, tablet, desktop } from "../utils/mediaQueries";
 
 const Container = styled.div`
   display: flex;
@@ -23,6 +24,9 @@ const Wrapper = styled.div`
   width: 100%;
   max-width: 1440px;
   height: 100%;
+  ${desktop(`
+  max-width: 1000px;
+`)}
 `;
 
 const BackButtonWrapper = styled.div`
@@ -32,6 +36,9 @@ const BackButtonWrapper = styled.div`
   width: 100%;
   max-width: 1440px;
   height: 100%;
+  ${desktop(`
+  max-width: 1000px;
+`)}
 `;
 
 const BackButton = styled.button`

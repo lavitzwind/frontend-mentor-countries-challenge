@@ -16,7 +16,9 @@ const Footer = () => {
   return (
     <Container
       style={{
-        backgroundColor: darkMode ? "var(--very-dark-blue)" : "var(--white)",
+        backgroundColor: darkMode
+          ? "var(--very-dark-blue)"
+          : "var(--very-light-gray)",
       }}
     ></Container>
   );

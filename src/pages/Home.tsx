@@ -7,6 +7,7 @@ import Footer from "../components/Footer";
 import { useState, useEffect, useContext } from "react";
 import { DarkModeContext } from "../context/darkModeContext";
 import axios from "axios";
+import { mobile, tablet } from "../utils/mediaQueries";
 
 const Container = styled.div`
   display: flex;
@@ -15,13 +16,19 @@ const Container = styled.div`
   justify-content: center;
   width: 100%;
   height: 100%;
+  background-color: var(--very-light-gray);
 `;
 
 const SearchDropdown = styled.div`
   display: flex;
+
   justify-content: center;
   align-items: center;
   width: 100%;
+  ${tablet(`
+  flex-direction: column;
+  margin-bottom: 5rem;
+  `)}
 `;
 
 interface Countries {
@@ -67,7 +74,13 @@ const Home = () => {
   }, []);
 
   return (
-    <Container>
+    <Container
+      style={{
+        backgroundColor: darkMode
+          ? "var(--very-dark-blue)"
+          : "var(--very-light-gray)",
+      }}
+    >
       <Navbar />
       <SearchDropdown
         style={{

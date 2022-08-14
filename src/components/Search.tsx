@@ -3,6 +3,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import { useContext } from "react";
 import { DarkModeContext } from "../context/darkModeContext";
 import { SearchProps } from "../interfaces/searchProps";
+import { mobile, tablet, desktop } from "../utils/mediaQueries";
 
 const Container = styled.div`
   display: flex;
@@ -12,6 +13,15 @@ const Container = styled.div`
   margin: 50px 0 50px 0;
   max-width: 720px;
   height: 40px;
+  ${desktop(`
+  max-width: 500px;
+`)}
+  ${tablet(`
+    max-width: 250px;
+  `)}
+  ${mobile(`
+  max-width: 245px;
+`)}
 `;
 
 const Form = styled.form`
@@ -26,6 +36,9 @@ const Form = styled.form`
   background-color: var(--white);
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   transition: all 0.15s ease-in-out;
+  ${tablet(`
+  width: 100%;
+  `)}
 
   &:hover,
   &:focus-within {
