@@ -15,6 +15,7 @@ const Container = styled.div`
   align-items: center;
   width: 100%;
   height: 100%;
+  overflow: hidden;
 `;
 
 const Wrapper = styled.div`
@@ -24,9 +25,13 @@ const Wrapper = styled.div`
   width: 100%;
   max-width: 1440px;
   height: 100%;
+  overflow: hidden;
   ${desktop(`
-  max-width: 1000px;
+  max-width: 900px;
 `)}
+  ${tablet(`
+    flex-direction: column;
+  `)}
 `;
 
 const BackButtonWrapper = styled.div`
@@ -37,8 +42,15 @@ const BackButtonWrapper = styled.div`
   max-width: 1440px;
   height: 100%;
   ${desktop(`
-  max-width: 1000px;
+  max-width: 900px;
 `)}
+  ${tablet(`
+  max-width: 500px;
+  `)}
+  ${mobile(`
+  max-width: 420px;
+  margin-left: 4rem;
+  `)}
 `;
 
 const BackButton = styled.button`
@@ -68,6 +80,11 @@ const LeftSection = styled.div`
   width: 100%;
   height: 450px;
   margin-top: 5rem;
+  ${tablet(`
+  align-items: center;
+  margin-top: 5rem;
+  height: auto;
+`)}
 `;
 
 const Flag = styled.img`
@@ -83,6 +100,9 @@ const RightSection = styled.div`
   align-items: center;
   justify-content: center;
   margin-top: 5rem;
+  ${tablet(`
+  margin-top: 0s;
+`)}
 
   span {
     font-size: 1rem;
@@ -97,6 +117,12 @@ const UpperSection = styled.div`
   width: 100%;
   height: 100%;
   gap: 7rem;
+
+  ${tablet(`
+  flex-direction: column;
+  gap: 0;
+  margin-left: 6rem;
+`)}
 `;
 
 const LeftSide = styled.div`
@@ -148,6 +174,11 @@ const RightSide = styled.div`
   gap: 15px;
   width: 120%;
   height: auto;
+
+  ${tablet(`
+  width: 100%;
+  margin-top: 3.5rem;
+  `)}
 `;
 
 const Domain = styled.p`
@@ -184,6 +215,10 @@ const BorderCountry = styled.p`
   flex-wrap: wrap;
   font-size: 1rem;
   font-weight: 800;
+
+  ${tablet(`
+  margin-left: 2.5rem;
+  `)}
 `;
 
 interface Country {

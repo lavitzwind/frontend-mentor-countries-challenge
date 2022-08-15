@@ -13,14 +13,18 @@ const Container = styled.div`
   margin: 50px 0 50px 0;
   max-width: 720px;
   height: 40px;
+  margin-left: 1rem;
   ${desktop(`
-  max-width: 500px;
+  max-width: 480px;
+  overflow: hidden;
 `)}
   ${tablet(`
     max-width: 250px;
   `)}
   ${mobile(`
   max-width: 245px;
+  margin-left: 0;
+  margin-right: 1rem;
 `)}
 `;
 
@@ -38,6 +42,7 @@ const Form = styled.form`
   transition: all 0.15s ease-in-out;
   ${tablet(`
   width: 100%;
+  justify-content: center;
   `)}
 
   &:hover,

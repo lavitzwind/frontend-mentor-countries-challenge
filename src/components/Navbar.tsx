@@ -13,6 +13,7 @@ const Container = styled.nav`
   background-color: var(--white);
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   z-index: 1;
+  overflow: hidden;
 `;
 
 const Wrapper = styled.div`
@@ -20,10 +21,12 @@ const Wrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   height: 100%;
-  width: 100%;
+  width: 100vw;
   max-width: 1440px;
+  overflow: hidden;
+  margin: 0 1rem;
   ${desktop(`
-    max-width: 1000px;
+    max-width: 900px;
   `)}
   ${tablet(`
     max-width: 500px;
@@ -38,7 +41,7 @@ const Logo = styled.h1`
   font-size: 1.5rem;
   color: var(--black);
   ${mobile(`
-  font-size: 1.2rem;
+  font-size: 1.08rem;
 `)}
 `;
 
@@ -50,6 +53,10 @@ const DarkMode = styled.div`
   font-weight: 800;
   font-size: 0.8rem;
   transition: all 0.3s ease-in-out;
+  ${mobile(`
+  gap: 1.5px;
+  font-size: 0.8rem;
+`)}
 
   &:hover {
     cursor: pointer;

@@ -13,8 +13,9 @@ const Container = styled.div`
   width: 100%;
   height: 40px;
   max-width: 720px;
+  margin-right: 1rem;
   ${desktop(`
-  max-width: 470px;
+  max-width: 410px;
 `)}
   ${tablet(`
   max-width: 225px;

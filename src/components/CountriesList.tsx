@@ -11,6 +11,7 @@ const Container = styled.div`
   align-items: flex-start;
   width: 100%;
   height: 100%;
+  overflow: hidden;
 `;
 
 const Wrapper = styled.div`
@@ -22,8 +23,9 @@ const Wrapper = styled.div`
   height: 100%;
   gap: 95px;
   flex-wrap: wrap;
+  margin: 0 0.5rem;
   ${desktop(`
-    max-width: 1000px;
+    max-width: 900px;
 `)}
   ${mobile(`
     max-width: 380px;
@@ -49,6 +51,7 @@ const CountriesCard = styled.div`
 `)}
   ${tablet(`
   width: 40%;
+  height: 321px;
 `)}
   ${mobile(`
   width: 70%;
@@ -75,6 +78,7 @@ const CountryImg = styled.img`
 `)}
   ${tablet(`
   width: 300px;
+  height: 162px;
   `)}
 `;
 
@@ -91,22 +95,37 @@ const CountryName = styled.h2`
   font-size: 1.5rem;
   font-weight: 800;
   color: var(--black);
+  ${mobile(`
+  font-size: 1.3rem;
+`)}
 `;
 
 const CountryPopulation = styled.p`
   font-size: 0.9rem;
+  ${mobile(`
+  font-size: 0.8rem;
+`)}
 `;
 
 const CountryRegion = styled.p`
   font-size: 0.9rem;
+  ${mobile(`
+  font-size: 0.8rem;
+`)}
 `;
 
 const CountryCapital = styled.p`
   font-size: 0.9rem;
+  ${mobile(`
+  font-size: 0.8rem;
+`)}
 `;
 
 const Text = styled.span`
   font-weight: 800;
+  ${mobile(`
+  font-size: 0.8rem;
+`)}
 `;
 
 interface Countries {

@@ -17,6 +17,7 @@ const Container = styled.div`
   width: 100%;
   height: 100%;
   background-color: var(--very-light-gray);
+  overflow: hidden;
 `;
 
 const SearchDropdown = styled.div`
