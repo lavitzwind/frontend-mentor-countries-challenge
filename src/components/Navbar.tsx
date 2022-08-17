@@ -86,7 +86,7 @@ const Navbar = () => {
       }}
     >
       <Wrapper>
-        <Logo href="/#" target="_self">
+        <Logo href="/#" onClick={window.location.reload}>
           Where in the world?
         </Logo>
         <DarkMode onClick={handleDarkMode}>
