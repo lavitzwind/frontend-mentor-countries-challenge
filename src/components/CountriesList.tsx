@@ -55,6 +55,7 @@ const CountriesCard = styled.div`
 `)}
   ${mobile(`
   width: 70%;
+  height: 305px;
 `)}
 
   &:hover {

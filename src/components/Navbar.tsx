@@ -36,10 +36,11 @@ const Wrapper = styled.div`
   `)}
 `;
 
-const Logo = styled.h1`
+const Logo = styled.a`
   font-weight: 800;
   font-size: 1.5rem;
   color: var(--black);
+  text-decoration: none;
   ${mobile(`
   font-size: 1.08rem;
 `)}
@@ -85,7 +86,9 @@ const Navbar = () => {
       }}
     >
       <Wrapper>
-        <Logo>Where in the world?</Logo>
+        <Logo href="/#" target="_self">
+          Where in the world?
+        </Logo>
         <DarkMode onClick={handleDarkMode}>
           <DarkModeIcon />
           <DarkModeName>Dark Mode</DarkModeName>
