@@ -7,7 +7,7 @@ import Footer from "../components/Footer";
 import { useState, useEffect, useContext } from "react";
 import { DarkModeContext } from "../context/darkModeContext";
 import axios from "axios";
-import { mobile, tablet } from "../utils/mediaQueries";
+import { tablet } from "../utils/mediaQueries";
 
 const Container = styled.div`
   display: flex;

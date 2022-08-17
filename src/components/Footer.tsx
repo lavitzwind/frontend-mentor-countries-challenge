@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useContext } from "react";
 import { DarkModeContext } from "../context/darkModeContext";
-import { mobile, tablet, desktop } from "../utils/mediaQueries";
+import { mobile, tablet } from "../utils/mediaQueries";
 
 const Container = styled.div`
   display: flex;
